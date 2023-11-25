@@ -1,7 +1,7 @@
 using Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Data
+namespace CorporateTechGear.Data
 {
     public class ShopContext : DbContext
     {

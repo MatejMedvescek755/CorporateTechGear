@@ -19,7 +19,7 @@ namespace CorporateTechGear
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<Data.ShopContext>(options =>
+            services.AddDbContext<CorporateTechGear.Data.ShopContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ShopContext")));
         }
 
