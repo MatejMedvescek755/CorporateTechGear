@@ -1,0 +1,40 @@
+@model web.Models.CartItem
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>CartItem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="cart_id" class="control-label"></label>
+                <input asp-for="cart_id" class="form-control" />
+                <span asp-validation-for="cart_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="product_id" class="control-label"></label>
+                <input asp-for="product_id" class="form-control" />
+                <span asp-validation-for="product_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="quantity" class="control-label"></label>
+                <input asp-for="quantity" class="form-control" />
+                <span asp-validation-for="quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -19,7 +19,7 @@ namespace CorporateTechGear
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<CorporateTechGear.Data.ShopContext>(options =>
+            services.AddDbContext<web.Data.ShopContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ShopContext")));
             
             services.AddCors(options =>{ options.AddPolicy("ReactPolicy", builder =>
@@ -56,6 +56,16 @@ namespace CorporateTechGear
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            // Set Home view as the default page
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path == "/")
+                {
+                    context.Request.Path = "/Home/Index";
+                }
+                await next();
             });
         }
     }
