@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CorporateTechGear.Data;
 using Models;
 
-namespace seminarska.Controllers
+namespace CorporateTechGear.Controllers
 {
     public class ProbuctsController : Controller
     {
