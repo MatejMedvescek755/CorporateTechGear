@@ -62,6 +62,12 @@ namespace web.Controllers
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
+
+                /// Create a cart for the user
+                var cart = new Cart { user_id = user.id };
+                _context.Cart.Add(cart);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
