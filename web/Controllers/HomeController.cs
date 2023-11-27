@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using web.Data;
 using web.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace web.Controllers;
 
@@ -15,6 +16,40 @@ public class HomeController : Controller
     {
         _logger = logger;
         _context = context;
+    }
+
+    public ActionResult Login()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Login(User user)
+    {
+        if (ModelState.IsValid)
+        {
+            var obj = _context.Users.Where(a => a.email.Equals(user.email) && a.password.Equals(user.password)).FirstOrDefault();
+            if (obj != null)
+            {
+                HttpContext.Session.SetString("UserID", obj.id.ToString());
+                HttpContext.Session.SetString("UserName", obj.first_name);
+                return RedirectToAction("UserDashDoard");
+            }
+        }
+        return View(user);
+    }
+
+    public ActionResult UserDashBoard()
+    {
+        if (HttpContext.Session.GetString("UserID") != null)
+        {
+            return View();
+        }
+        else
+        {
+            return RedirectToAction("Login");
+        }
     }
 
     public async Task<IActionResult> Index()
