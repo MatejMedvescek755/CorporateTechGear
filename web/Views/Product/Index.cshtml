@@ -6,66 +6,50 @@
 
 <h1>Index</h1>
 
+<link rel="stylesheet" href="~/css/Product.css" asp-append-version="true" />
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.rating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.stock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.brand)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.stock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.brand)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+<table class="board">
+        @foreach (var item in Model)
+
+        {
+            <div style="display:inline-block;">
+                <div class="card">
+                    <img src="~/no_img.png" class="preview" alt="Avatar">
+                    <div class="container">
+                        <h4><b>
+                            @Html.DisplayFor(modelItem => item.name)
+                        </b></h4>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.price)€
+                        </p>
+                    </div>
+                </div>
+            </div>
+            @* <div>
+        @Html.DisplayFor(modelItem => item.price)
+        </div>
+        <div>
+        @Html.DisplayFor(modelItem => item.rating)
+        </div>
+        <div>
+        @Html.DisplayFor(modelItem => item.stock)
+        </div>
+        <div>
+        @Html.DisplayFor(modelItem => item.category)
+        </div>
+        <div>
+        @Html.DisplayFor(modelItem => item.description)
+        </div>
+        <div>
+        @Html.DisplayFor(modelItem => item.brand)
+        </div>
+        <div>
+        <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+        </div> *@
+        }
 </table>
