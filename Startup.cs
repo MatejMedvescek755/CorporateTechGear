@@ -22,13 +22,6 @@ namespace CorporateTechGear
             services.AddDbContext<web.Data.ShopContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ShopContext")));
             
-            services.AddCors(options =>{ options.AddPolicy("ReactPolicy", builder =>
-            {
-                builder.WithOrigins("http://localhost:7000")
-                       .AllowAnyHeader()
-                       .AllowAnyMethod();
-            });
-    });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
