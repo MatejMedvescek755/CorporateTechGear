@@ -20,7 +20,7 @@ namespace CorporateTechGear
         {
             services.AddControllersWithViews();
             services.AddDbContext<web.Data.ShopContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ShopContext")));
+                options.UseSqlServer(Configuration.GetConnectionString("AzureContext")));
             
             services.AddCors(options =>{ options.AddPolicy("ReactPolicy", builder =>
             {
