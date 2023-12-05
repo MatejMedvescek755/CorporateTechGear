@@ -28,6 +28,9 @@ namespace CorporateTechGear
                        .AllowAnyHeader()
                        .AllowAnyMethod();
             });
+            services.AddRazorPages();
+            services.AddDefaultIdentity<ApplicationUser>();
+                .AddEntityFrameworkStores<ShopContext>();
     });
         }
 
