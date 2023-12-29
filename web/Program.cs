@@ -10,7 +10,7 @@ var GetConnectionString = builder.Configuration.GetConnectionString("ShopContext
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<web.Data.ShopContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("AzureContext")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("ShopContext")));
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
