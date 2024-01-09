@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.RequestQueue;
@@ -24,23 +25,27 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private RequestQueue requestQueue;
-    private TextView osebe;
+    private Button login;
     private String url = "https://is-university.azurewebsites.net/api/v1/student";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        requestQueue = Volley.newRequestQueue(getApplicationContext());
-        osebe = (TextView) findViewById(R.id.osebe);
+        login = super.findViewById(R.id.button2);
+
+        login.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                login.setVisibility(View.GONE);
+                login = findViewById(R.id.button3);
+                System.out.println("Hello");
+                Intent i = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
-    public  void prikaziOsebe(View view){
-        if (view != null){
-            JsonArrayRequest request = new JsonArrayRequest(url, jsonArrayListener, errorListener);
-            requestQueue.add(request);
-        }
-    }
 
     private Response.Listener<JSONArray> jsonArrayListener = new Response.Listener<JSONArray>() {
         @Override
@@ -62,15 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             }
-
-            osebe.setText("");
-
-
-            for (String row: data){
-                String currentText = osebe.getText().toString();
-                osebe.setText(currentText + "\n\n" + row);
-            }
-
         }
 
     };

@@ -6,44 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="CTG!"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.459"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.837" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints"
+
+            >
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    />
+
+                <Button
+                    android:id="@+id/button_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cart"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+
+        
+
+    </LinearLayout>
+
+
+
+
+
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Heaaaaallo!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="32dp"
+        android:text="Corporate Tech Gear"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.351" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-
-        android:id="@+id/osebe"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="Seznam studentov."
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:onClick="prikaziOsebe"
-        android:text="Prikazi studente"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1" />
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="263dp"
+        android:layout_height="27dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="114dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
