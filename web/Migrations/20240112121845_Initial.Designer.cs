@@ -12,7 +12,7 @@ using web.Data;
 namespace web.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20240109192352_Initial")]
+    [Migration("20240112121845_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -260,6 +260,14 @@ namespace web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
+                    b.Property<string>("product_id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("product_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("total")
                         .HasColumnType("decimal(18,2)");
 
@@ -348,9 +356,6 @@ namespace web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<int?>("Cartid")
-                        .HasColumnType("int");
-
                     b.Property<int>("brand")
                         .HasColumnType("int");
 
@@ -375,8 +380,6 @@ namespace web.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("id");
-
-                    b.HasIndex("Cartid");
 
                     b.ToTable("Product", (string)null);
                 });
@@ -500,18 +503,6 @@ namespace web.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("web.Models.Product", b =>
-                {
-                    b.HasOne("web.Models.Cart", null)
-                        .WithMany("Products")
-                        .HasForeignKey("Cartid");
-                });
-
-            modelBuilder.Entity("web.Models.Cart", b =>
-                {
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

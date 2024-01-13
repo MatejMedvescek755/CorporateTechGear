@@ -34,31 +34,6 @@ namespace web.Models
 
     private readonly web.Data.ShopContext _context;
   }
-
-  public class ProductModel : PageModel
-  {
-    private readonly web.Data.ShopContext _context;
-
-    public ProductModel(web.Data.ShopContext context)
-    {
-      _context = context;
-    }
-
-    public IActionResult OnGetProductClicked(int productId)
-    {
-      
-        // Retrieve product data based on productId
-        Product product = _context.Products.Find(productId);
-
-        if (product == null)
-        {
-            // Handle the case where the product is not found
-            return RedirectToPage("/Index");
-        }
-        // Redirect to the product description page with product data as query parameters
-        return RedirectToPage("/ProductDescription", new { id = product.id, name = product.name, description = product.description });
-    }
-  }
 }
 
 

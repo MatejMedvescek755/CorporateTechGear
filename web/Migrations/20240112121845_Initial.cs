@@ -71,7 +71,9 @@ namespace web.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     user_id = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    total = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    product_id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    product_name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -121,6 +123,25 @@ namespace web.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Product",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    price = table.Column<int>(type: "int", nullable: false),
+                    rating = table.Column<int>(type: "int", nullable: false),
+                    stock = table.Column<int>(type: "int", nullable: false),
+                    category = table.Column<int>(type: "int", nullable: false),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    brand = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Product", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -273,31 +294,6 @@ namespace web.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Product",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    price = table.Column<int>(type: "int", nullable: false),
-                    rating = table.Column<int>(type: "int", nullable: false),
-                    stock = table.Column<int>(type: "int", nullable: false),
-                    category = table.Column<int>(type: "int", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    brand = table.Column<int>(type: "int", nullable: false),
-                    Cartid = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Product", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Product_Cart_Cartid",
-                        column: x => x.Cartid,
-                        principalTable: "Cart",
-                        principalColumn: "id");
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -336,11 +332,6 @@ namespace web.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Product_Cartid",
-                table: "Product",
-                column: "Cartid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -362,6 +353,9 @@ namespace web.Migrations
 
             migrationBuilder.DropTable(
                 name: "Brand");
+
+            migrationBuilder.DropTable(
+                name: "Cart");
 
             migrationBuilder.DropTable(
                 name: "CartItem");
@@ -389,9 +383,6 @@ namespace web.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Cart");
         }
     }
 }
