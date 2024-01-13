@@ -17,6 +17,8 @@
     transition: 0.3s;
     width: 15vw;
     margin-left: 10px;
+    text-decoration: none;
+    color: black;
   }
   
   .card:hover {

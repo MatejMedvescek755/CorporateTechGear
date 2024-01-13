@@ -28,7 +28,7 @@ namespace web.Controllers
         }
 
         // GET: User/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Users == null)
             {
@@ -62,19 +62,13 @@ namespace web.Controllers
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-
-                /// Create a cart for the user
-                var cart = new Cart { user_id = user.id };
-                _context.Cart.Add(cart);
-                await _context.SaveChangesAsync();
-
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
         }
 
         // GET: User/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Users == null)
             {
@@ -94,7 +88,7 @@ namespace web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,email,first_name,last_name,password,address,role,age")] User user)
+        public async Task<IActionResult> Edit(string id, [Bind("id,email,first_name,last_name,password,address,role,age")] User user)
         {
             if (id != user.id)
             {
@@ -125,7 +119,7 @@ namespace web.Controllers
         }
 
         // GET: User/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.Users == null)
             {
@@ -145,7 +139,7 @@ namespace web.Controllers
         // POST: User/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.Users == null)
             {
@@ -161,7 +155,7 @@ namespace web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(string id)
         {
           return (_context.Users?.Any(e => e.id == id)).GetValueOrDefault();
         }
