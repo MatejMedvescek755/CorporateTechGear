@@ -11,8 +11,7 @@ using web.Models;
 namespace web.Controllers_Api
 {
     [Route("api/v1/User")]
-    [ApiController]ž
-    [ApiKeyAuth]
+    [ApiController]
     public class UsersApiController : ControllerBase
     {
         private readonly ShopContext _context;
