@@ -6,14 +6,14 @@ using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ShopContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ShopContext") ?? throw new InvalidOperationException("Connection string 'Shop' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AzureContext") ?? throw new InvalidOperationException("Connection string 'Shop' not found.")));
 
-var GetConnectionString = builder.Configuration.GetConnectionString("ShopContext");
+var GetConnectionString = builder.Configuration.GetConnectionString("AzureContext");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<web.Data.ShopContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("ShopContext")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("AzureContext")));
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
