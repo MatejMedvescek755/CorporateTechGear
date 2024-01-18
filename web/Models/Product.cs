@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
 /*
@@ -19,18 +21,19 @@ CREATE TABLE `products` (
 
 namespace web.Models
 {
-    public class Product
-    {
-        public int id {get; set;}
-        public string name {get; set;}
-        public int price {get; set;}
-        public int rating {get; set;}
-        public int stock {get; set;}
-        public int category {get; set;}
-        public string description {get; set;}
-        public int brand {get; set;}
+  public class Product
+  {
+    public int id { get; set; }
+    public string name { get; set; }
+    public int price { get; set; }
+    public int rating { get; set; }
+    public int stock { get; set; }
+    public int category { get; set; }
+    public string description { get; set; }
+    public int brand { get; set; }
 
-    }
+    private readonly web.Data.ShopContext _context;
+  }
 }
 
 

@@ -4,6 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using web.Models;
+using web.Data;
+using Microsoft.AspNetCore.Identity;
+using 
 
 namespace CorporateTechGear
 {
@@ -31,6 +35,8 @@ namespace CorporateTechGear
             services.AddRazorPages();
             services.AddDefaultIdentity<ApplicationUser>();
                 .AddEntityFrameworkStores<ShopContext>();
+            services.AddSwaggerGen();
+
     });
         }
 
@@ -69,6 +75,12 @@ namespace CorporateTechGear
                     context.Request.Path = "/Home/Index";
                 }
                 await next();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CorporateTechGear API V1");
             });
         }
     }

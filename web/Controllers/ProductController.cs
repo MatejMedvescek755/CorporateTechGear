@@ -37,6 +37,8 @@ namespace web.Controllers
 
             var product = await _context.Products
                 .FirstOrDefaultAsync(m => m.id == id);
+        
+
             if (product == null)
             {
                 return NotFound();

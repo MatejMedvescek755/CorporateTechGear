@@ -5,13 +5,12 @@
 }
 
 <link rel="stylesheet" href="~/css/Product.css" asp-append-version="true" />
-
 <table class="board">
         @foreach (var item in Model)
 
         {
             <div style="display:inline-block;">
-                <div class="card">
+                <a class="card" asp-action="details"  asp-controller="Product" asp-route-id="@item.id">
                     <img src="~/no_img.png" class="preview" alt="Avatar">
                     <div class="container">
                         <h4><b>
@@ -21,7 +20,7 @@
                             @Html.DisplayFor(modelItem => item.price)€
                         </p>
                     </div>
-                </div>
+                </a>
             </div>
             @* <div>
         @Html.DisplayFor(modelItem => item.price)
