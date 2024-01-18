@@ -1,5 +1,7 @@
 @model IEnumerable<web.Models.Cart>
+@using Microsoft.AspNetCore.Identity
 
+@inject UserManager<web.Models.ApplicationUser> UserManager
 @{
     ViewData["Title"] = "Index";
 }
@@ -16,12 +18,6 @@
                 @Html.DisplayNameFor(model => model.user_id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.total)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.product_id)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.product_name)
             </th>
             <th></th>
@@ -29,25 +25,21 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+    @if (UserManager.GetUserId(User) == item.user_id){
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.user_id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.total)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.product_id)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.product_name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                @* <a asp-action="Edit" asp-route-id="@item.id">Edit</a> | *@
                 <a asp-action="Details" asp-route-id="@item.id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
             </td>
         </tr>
+    }
 }
     </tbody>
 </table>
