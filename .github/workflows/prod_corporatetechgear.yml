@@ -54,4 +54,4 @@ jobs:
           app-name: 'CorporateTechGear'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EA45C8641FCD4AF9BAC13DB07647CF85 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1808706E98B244F7B8E373F459D83F11 }}
