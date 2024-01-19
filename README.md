@@ -13,5 +13,3 @@ Matej Medvešček:
 Spletna Aplikacija, podatkovna baza, deploy
 Domen Baumgartner:
 Api, mobilna aplikacija, poročilo
-
-![Slika 1]((https://imgur.com/a/mpXm1pE)https://imgur.com/a/mpXm1pE)
