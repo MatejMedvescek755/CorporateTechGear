@@ -14,4 +14,4 @@ Spletna Aplikacija, podatkovna baza, deploy
 Domen Baumgartner:
 Api, mobilna aplikacija, poročilo
 
-![alt text]([http://url/to/img.png](https://imgur.com/a/mpXm1pE)https://imgur.com/a/mpXm1pE)
+![Slika 1]((https://imgur.com/a/mpXm1pE)https://imgur.com/a/mpXm1pE)
